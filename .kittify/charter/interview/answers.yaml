@@ -1,0 +1,82 @@
+schema_version: 1.0.0
+mission: software-dev
+profile: comprehensive
+answers:
+  project_intent: >-
+    Mise & Place is a modular, cloud, multi-tenant restaurant platform for small and mid-size
+    Indian restaurants. It starts as a portfolio project and must be able to grow into a paid
+    product. v1 is dine-in only (roles: guest, owner; staff and kitchen roles and per-role pages
+    are planned from the start but built later). v1 is done when it is a demo the owner can show
+    and explain, not a complete product. Guests scan a table QR code (encodes outlet and table),
+    browse the menu with ingredients, allergens and customizations, add to cart, order and pay,
+    as anonymous sessions with no login. Pay-before vs pay-after and what releases an order to
+    the kitchen are per-outlet settings, not separate code paths. v1 payments are UPI QR plus
+    staff "mark as paid"; no real gateway. Out of scope: GST invoicing, accounting, reviews.
+    v2: kitchen staff, cloud kitchens, PWA.
+  languages_frameworks: >-
+    Frontend: Vue 3 + Vite + TypeScript, built on the Axis design system (pnpm, Tailwind v4).
+    Backend: NestJS (TypeScript). Database: PostgreSQL (single database, row-level security).
+    Mobile-first responsive web: guest screens phone-first; owner screens work on phones but are
+    designed for tablet and laptop. Screens load from cached data where possible and show a clear
+    offline state so the v2 PWA is an add-on, not a rewrite.
+  testing_requirements: >-
+    Light, solo-developer testing. Tests are MANDATORY for (1) tenant isolation / row-level
+    security (a restaurant or outlet must never read or write another's rows) and (2) payment
+    state and order-release rules (pay-before/pay-after, mark-as-paid). Other business rules get
+    tests where cheap and valuable; there is no blanket coverage percentage and TDD is not
+    required. Note: the stated engineering principle is "write tests for business rules"; the
+    mandatory floor is payments and tenant isolation, and other rules are tested at the
+    developer's discretion.
+  quality_gates: >-
+    Typecheck (vue-tsc / tsc) and lint must pass before merge. Tenant-isolation and payment tests
+    must pass. Every table carries restaurant and outlet scope enforced by RLS; no query path
+    bypasses it. Features are gated by per-outlet feature flags, never by plan names. UI uses Axis
+    components; when Axis lacks one, list the gap instead of creating a one-off component.
+  review_policy: >-
+    Solo developer. Short-lived feature branches per work package, Conventional Commits, zero
+    required approvals, merge to main only after a self-review checklist passes: (a) every new
+    table/query is tenant-scoped with RLS, (b) behaviour is gated by feature flags not plan names,
+    (c) modules interact via order events, not direct calls into another module's data, (d) Axis
+    reused and gaps listed, (e) a short ADR is written for any big decision.
+  performance_targets: >-
+    No hard numeric targets for v1. Guest screens must stay usable on mid-range phones over
+    average Indian mobile networks: load from cache where possible and degrade to a clear offline
+    state. Revisit with measurable budgets once the demo is stable.
+  deployment_constraints: >-
+    Cloud-hosted, single multi-tenant Postgres database, no premature microservices (modular
+    monolith with module boundaries: Core, Ordering, Payments, Records; Kitchen in v2). Main
+    branch is main. Hosting provider and CI are not yet chosen; record that choice as an ADR.
+  documentation_policy: >-
+    Record big decisions as short ADRs. Keep the domain glossary precise: restaurant, outlet,
+    table, guest session, order, order event, module, feature flag, plan. Do not use "tenant" in
+    user-facing text, and do not conflate restaurant with outlet. Document gaps found in Axis in a
+    running list. The demo narrative (what to show and explain) is part of v1 deliverables.
+  risk_boundaries: >-
+    Costliest failure: a cross-tenant data leak. Never ship a table without restaurant and outlet
+    scoping and an RLS policy; never use a service role or bypass RLS in request-handling code;
+    never write cross-tenant queries outside explicit, reviewed admin tooling. Modules must not
+    read or write another module's data directly; use order events. Guest sessions are anonymous
+    and must not expose other guests' orders. Secrets and credentials never go in the repo.
+  amendment_process: >-
+    The owner amends the charter by running /spec-kitty.charter with the new guidance; the agent
+    updates answers.yaml, regenerates charter.yaml and charter.md, and commits. Larger changes
+    that alter architecture get an ADR first.
+  exception_policy: >-
+    Exceptions to a rule (for example skipping tests for a throwaway demo path or a temporary
+    one-off component) are allowed only with a short written note in the commit or an ADR stating
+    the reason and when it will be removed. Exceptions never apply to tenant isolation or payment
+    state rules.
+selected_paradigms:
+  - domain-driven-design
+  - atomic-design
+selected_directives:
+  - DIRECTIVE_001
+  - DIRECTIVE_003
+  - DIRECTIVE_024
+  - DIRECTIVE_030
+  - DIRECTIVE_031
+  - DIRECTIVE_033
+  - DIRECTIVE_050
+available_tools:
+  - git
+  - spec-kitty
