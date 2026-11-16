@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-11-16T20:23:00.953873+00:00",
+  "flattened": false,
+  "friendly_name": "Project Foundation",
+  "mission_id": "01M7K0DZT9H9TRWJPV2DRRGA9R",
+  "mission_number": null,
+  "mission_slug": "project-foundation-01M7K0DZ",
+  "mission_type": "software-dev",
+  "purpose_context": "Establishes the repository, frontend and backend shells, tenant-isolated data base, owner sign-in, per-outlet feature flags, demo data and developer tooling so menus, ordering and payments can be added as independent modules.",
+  "purpose_tldr": "Set up the multi-tenant skeleton that every later Mise & Place feature builds on.",
+  "slug": "project-foundation-01M7K0DZ",
+  "target_branch": "feat/project-foundation",
+  "topology": "single_branch"
+}
