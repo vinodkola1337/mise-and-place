@@ -1,0 +1,18 @@
+project:
+  uuid: 22c6f10c-c605-42fa-b30f-800b3e013c64
+  slug: mise-and-place
+  node_id: c0a8b9d6248a
+  build_id: 6e44b606-855e-500b-a0ad-17c82ed8981b
+mission_type_activations:
+- software-dev
+- documentation
+- research
+- plan
+vcs:
+  type: git
+agents:
+  available:
+  - claude
+  auto_commit: true
+  lint_on_edit: false
+charter: .kittify/charter/charter.yaml
