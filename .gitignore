@@ -35,3 +35,50 @@
 .kittify/workspaces/
 .worktrees/
 kitty-ops/ops-index.jsonl
+
+# --- Project hygiene (dependencies, secrets, build output, local data) ---
+node_modules/
+.pnpm-store/
+.yarn/cache/
+.yarn/install-state.gz
+.pnp.*
+
+# Secrets / environment (keep templates)
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+
+# Build output
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+.turbo/
+.cache/
+coverage/
+*.tsbuildinfo
+
+# Local database data
+*.sqlite
+*.sqlite3
+*.db
+pgdata/
+postgres-data/
+mysql-data/
+mongo-data/
+.data/
+data/db/
+
+# Logs / OS / editor
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/

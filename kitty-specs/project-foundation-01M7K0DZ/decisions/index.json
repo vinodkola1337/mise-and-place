@@ -1,0 +1,80 @@
+{
+  "entries": [
+    {
+      "created_at": "2026-11-16T20:23:23.522246Z",
+      "decision_id": "01M7K0EP42QCK4ZYBBTCZWET4Y",
+      "final_answer": "Seeded demo owner only",
+      "input_key": "owner_account_creation",
+      "mission_id": "01M7K0DZT9H9TRWJPV2DRRGA9R",
+      "mission_slug": "project-foundation-01M7K0DZ",
+      "opened_by": "cli",
+      "options": [
+        "Seeded demo owner only",
+        "Self-signup creates restaurant + owner",
+        "Invite-only (CLI/admin command)",
+        "Other"
+      ],
+      "origin_flow": "specify",
+      "other_answer": false,
+      "question": "How does an owner account come into existence in this foundation?",
+      "rationale": null,
+      "resolved_at": "2026-11-16T20:24:27.139617Z",
+      "resolved_by": null,
+      "slot_key": "specify.auth.owner-account-creation",
+      "status": "resolved",
+      "step_id": null,
+      "summary_json": null
+    },
+    {
+      "created_at": "2026-11-16T20:24:29.969272Z",
+      "decision_id": "01M7K0GQ0HNYMMCYEMNEY3Y407",
+      "final_answer": "Live walkthrough + tests",
+      "input_key": "foundation_done_proof",
+      "mission_id": "01M7K0DZT9H9TRWJPV2DRRGA9R",
+      "mission_slug": "project-foundation-01M7K0DZ",
+      "opened_by": "cli",
+      "options": [
+        "Sign in as demo owner, see owner area, other restaurants data invisible, flag toggles behaviour",
+        "Only automated tests prove it",
+        "Other"
+      ],
+      "origin_flow": "specify",
+      "other_answer": false,
+      "question": "What must be demonstrable to call this foundation done?",
+      "rationale": null,
+      "resolved_at": "2026-11-16T20:25:24.336117Z",
+      "resolved_by": null,
+      "slot_key": "specify.scope.sign-in-and-roles-proof",
+      "status": "resolved",
+      "step_id": null,
+      "summary_json": null
+    },
+    {
+      "created_at": "2026-11-16T20:25:27.134836Z",
+      "decision_id": "01M7K0JETYW4QW0MERCMC5EDER",
+      "final_answer": "Axis is not published yet; owner will publish it as an npm package before coding starts. Spec assumes consumption as an installed package and records this as a precondition.",
+      "input_key": "axis_availability",
+      "mission_id": "01M7K0DZT9H9TRWJPV2DRRGA9R",
+      "mission_slug": "project-foundation-01M7K0DZ",
+      "opened_by": "cli",
+      "options": [
+        "Published package",
+        "Local sibling repo (D:/Repos/Axis Design System)",
+        "Not ready: use temporary placeholders and list gaps",
+        "Other"
+      ],
+      "origin_flow": "specify",
+      "other_answer": true,
+      "question": "How is the Axis design system available to this repo?",
+      "rationale": null,
+      "resolved_at": "2026-11-16T20:26:35.003172Z",
+      "resolved_by": null,
+      "slot_key": "specify.dependencies.axis-availability",
+      "status": "resolved",
+      "step_id": null,
+      "summary_json": null
+    }
+  ],
+  "mission_id": "01M7K0DZT9H9TRWJPV2DRRGA9R",
+  "version": 1
+}
